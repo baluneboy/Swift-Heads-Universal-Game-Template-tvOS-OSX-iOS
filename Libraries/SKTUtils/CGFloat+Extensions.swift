@@ -63,7 +63,7 @@ public extension CGFloat {
   public func sign() -> CGFloat {
     return (self >= 0.0) ? 1.0 : -1.0
   }
-
+    
   /**
    * Returns a random floating point number between 0.0 and 1.0, inclusive.
    */

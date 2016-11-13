@@ -78,15 +78,19 @@ public extension SKAction {
 
     return SKAction.actionWithEffect(effect)
   }
-
+    
   /**
    * Causes the scene background to flash for duration seconds.
    */
   public class func colorGlitchWithScene(_ scene: SKScene, originalColor: SKColor, duration: TimeInterval) -> SKAction {
     return SKAction.customAction(withDuration: duration) {(node, elapsedTime) in
       if elapsedTime < CGFloat(duration) {
+        // FIXME seems like Int extension does not exist???
         //        scene.backgroundColor = SKColorWithRGB(Int.random(0...255), g: Int.random(0...255), b: Int.random(0...255))
-        scene.backgroundColor = SKColorWithRGB(111, g: 22, b: 3)
+        let RRR = 255.0 * CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        let GGG = 255.0 * CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        let BBB = 255.0 * CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        scene.backgroundColor = SKColorWithRGB(Int(RRR), g: Int(GGG), b: Int(BBB))
       } else {
         scene.backgroundColor = originalColor
       }
